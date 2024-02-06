@@ -6,7 +6,7 @@ function M.config()
   local mappings = {
     q = { "<cmd>confirm q<CR>", "Quit" },
     v = { "<cmd>vsplit<CR>", "Split" },
-    g = { "<cmd>lua require 'lvim.core.terminal'.lazygit_toggle()<cr>", "Lazygit" },
+    g = { "<cmd>LazyGit<CR>", "Lazygit" },
     b = { name = "Buffers" },
     d = { name = "Debug" },
     f = { name = "Find" },
