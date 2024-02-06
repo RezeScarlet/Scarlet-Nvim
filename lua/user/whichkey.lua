@@ -4,25 +4,16 @@ local M = {
 
 function M.config()
   local mappings = {
+    w = { "<cmd>confirm w<CR>", "Save" },
     q = { "<cmd>confirm q<CR>", "Quit" },
     v = { "<cmd>vsplit<CR>", "Split" },
     g = { "<cmd>LazyGit<CR>", "Lazygit" },
-    b = { name = "Buffers" },
-    d = { name = "Debug" },
+    L = { "<cmd>Lazy<CR>", "Lazygit" },
+    S = { "<cmd>Spectre<CR>", "Search and Replace" },
+    s = { "<cmd>ASToggle<CR>", "Toggle Auto Save" },
+    [";"] = { "<cmd>Alpha<CR>", "DashBoard" },
     f = { name = "Find" },
-    -- g = { name = "Git" },
     l = { name = "LSP" },
-    p = { name = "Plugins" },
-    t = { name = "Test" },
-    a = {
-      name = "Tab",
-      n = { "<cmd>$tabnew<cr>", "New Empty Tab" },
-      N = { "<cmd>tabnew %<cr>", "New Tab" },
-      o = { "<cmd>tabonly<cr>", "Only" },
-      h = { "<cmd>-tabmove<cr>", "Move Left" },
-      l = { "<cmd>+tabmove<cr>", "Move Right" },
-    },
-    T = { name = "Treesitter" },
   }
 
   local which_key = require "which-key"
@@ -35,14 +26,22 @@ function M.config()
         suggestions = 20,
       },
       presets = {
-        operators = false,
-        motions = false,
-        text_objects = false,
+        operators = true,
+        motions = true,
+        text_objects = true,
         windows = false,
         nav = false,
-        z = false,
-        g = false,
+        z = true,
+        g = true,
       },
+    },
+    icons = {
+      breadcrumb = "»",
+      separator = "➜",
+      group = "+",
+    },
+    layout = {
+      align = "center",
     },
     window = {
       border = "rounded",

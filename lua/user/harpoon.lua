@@ -1,22 +1,45 @@
 local M = {
   "ThePrimeagen/harpoon",
+  branch = "harpoon2",
   event = "VeryLazy",
   dependencies = {
     { "nvim-lua/plenary.nvim" },
+    { "nvim-telescope/telescope.nvim" },
   },
 }
 
 function M.config()
   local keymap = vim.keymap.set
-  local opts = { noremap = true, silent = true }
+  local harpoon = require("harpoon")
 
-  keymap("n", "<s-m>", "<cmd>lua require('user.harpoon').mark_file()<cr>", opts)
-  keymap("n", "<TAB>", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", opts)
-end
+  harpoon:setup()
 
-function M.mark_file()
-  require("harpoon.mark").add_file()
-  vim.notify "󱡅  marked file"
+  keymap("n", "<C-m>", function() harpoon:list():append() end)
+  keymap("n", "<C-1>", function() harpoon:list():select(1) end)
+  keymap("n", "<C-2>", function() harpoon:list():select(2) end)
+  keymap("n", "<C-3>", function() harpoon:list():select(3) end)
+  keymap("n", "<C-4>", function() harpoon:list():select(4) end)
+  keymap("n", "<C-e>", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+
+  -- local conf = require("telescope.config").values
+  -- local function toggle_telescope(harpoon_files)
+  --     local file_paths = {}
+  --     for _, item in ipairs(harpoon_files.items) do
+  --         table.insert(file_paths, item.value)
+  --     end
+  --
+  --     require("telescope.pickers").new({}, {
+  --         prompt_title = "Harpoon",
+  --         finder = require("telescope.finders").new_table({
+  --             results = file_paths,
+  --         }),
+  --         previewer = conf.file_previewer({}),
+  --         sorter = conf.generic_sorter({}),
+  --     }):find()
+  -- end
+  --
+  -- vim.keymap.set("n", "<C-e>", function() toggle_telescope(harpoon:list()) end,
+  --     { desc = "Open harpoon window" })
 end
 
 return M

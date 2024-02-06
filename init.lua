@@ -30,4 +30,7 @@ spec "user.neotab" -- Move with tab in insert mode
 spec "user.colorizer" -- Colorful color codes #ff0055
 spec "user.fidget" -- Shows processes 
 spec "user.lazygit"
+spec "user.spectre"
+spec "user.todocomments"
+spec "user.autosave"
 require "user.lazy"
