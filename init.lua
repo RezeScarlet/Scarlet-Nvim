@@ -21,7 +21,7 @@ spec "user.alpha"
 spec "user.project"
 spec "user.indentline"
 spec "user.toggleterm"
-spec "user.bqf"
+spec "user.bqf" -- Toggle codeblock
 spec "user.neoscroll"
 spec "user.eyeliner"
 spec "user.dressing"
