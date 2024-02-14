@@ -22,7 +22,7 @@ spec "user.project"
 spec "user.indentline"
 spec "user.toggleterm"
 spec "user.bqf" -- Better quickfix
-spec "user.neoscroll"
+-- spec "user.neoscroll"
 spec "user.eyeliner" -- F/f highlighter
 spec "user.dressing" -- Better interface windows
 spec "user.ufo" -- Toggle codeblock 
@@ -33,4 +33,6 @@ spec "user.lazygit"
 spec "user.spectre"
 spec "user.todocomments"
 spec "user.autosave"
+-- spec "user.keys" Display Keys
+spec "user.transparent"
 require "user.lazy"

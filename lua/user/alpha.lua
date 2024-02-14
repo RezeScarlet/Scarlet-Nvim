@@ -3,6 +3,19 @@ local M = {
   event = "VimEnter",
 }
 
+local function reset_logo_hls()
+-- Reference:
+-- https://github.com/sei40kr/yonvim/blob/5ccd00611573a3291304666902746e7d08b53d21/lua/yvim/plugins/alpha-nvim.lua#L10
+  local red = vim.g.terminal_color_1
+  local pink = vim.g.terminal_color_5
+  local gray = vim.api.nvim_get_hl(0, { name = "Comment" }).fg
+
+  vim.api.nvim_set_hl(0, "ScarletNvimDashboardLogo1", { fg = red })
+  vim.api.nvim_set_hl(0, "ScarletNvimDashboardLogo2", { fg = pink })
+  vim.api.nvim_set_hl(0, "ScarletNvimDashboardLogo3", { fg = red, bg = pink })
+  vim.api.nvim_set_hl(0, "ScarletNvimDashboardFooter", { fg = gray })
+end
+
 function M.config()
   local dashboard = require "alpha.themes.dashboard"
   local icons = require "user.icons"
@@ -13,23 +26,24 @@ function M.config()
     return b
   end
 
+  reset_logo_hls()
+
   dashboard.section.header.val = {
     -- [[ ___   ___    __    ____  __    ____  ____    _  _  _  _  ____  __  __ ]],
     -- [[/ __) / __)  /__\  (  _ \(  )  ( ___)(_  _)  ( \( )( \/ )(_  _)(  \/  )]],
     -- [[\__ \( (__  /(__)\  )   / )(__  )__)   )(     )  (  \  /  _)(_  )    ( ]],
     -- [[(___/ \___)(__)(__)(_)\_)(____)(____) (__)   (_)\_)  \/  (____)(_/\/\_)]],
 
-[[  ██████  ▄████▄   ▄▄▄       ██▀███   ██▓    ▓█████▄▄▄█████▓    ███▄    █ ██▒   █▓ ██▓ ███▄ ▄███▓]],
-[[▒██    ▒ ▒██▀ ▀█  ▒████▄    ▓██ ▒ ██▒▓██▒    ▓█   ▀▓  ██▒ ▓▒    ██ ▀█   █▓██░   █▒▓██▒▓██▒▀█▀ ██▒]],
-[[░ ▓██▄   ▒▓█    ▄ ▒██  ▀█▄  ▓██ ░▄█ ▒▒██░    ▒███  ▒ ▓██░ ▒░   ▓██  ▀█ ██▒▓██  █▒░▒██▒▓██    ▓██░]],
-[[  ▒   ██▒▒▓▓▄ ▄██▒░██▄▄▄▄██ ▒██▀▀█▄  ▒██░    ▒▓█  ▄░ ▓██▓ ░    ▓██▒  ▐▌██▒ ▒██ █░░░██░▒██    ▒██ ]],
-[[▒██████▒▒▒ ▓███▀ ░ ▓█   ▓██▒░██▓ ▒██▒░██████▒░▒████▒ ▒██▒ ░    ▒██░   ▓██░  ▒▀█░  ░██░▒██▒   ░██▒]],
-[[▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░▓  ░░░ ▒░ ░ ▒ ░░      ░ ▒░   ▒ ▒   ░ ▐░  ░▓  ░ ▒░   ░  ░]],
-[[░ ░▒  ░ ░  ░  ▒     ▒   ▒▒ ░  ░▒ ░ ▒░░ ░ ▒  ░ ░ ░  ░   ░       ░ ░░   ░ ▒░  ░ ░░   ▒ ░░  ░      ░]],
-[[░  ░  ░  ░          ░   ▒     ░░   ░   ░ ░      ░    ░            ░   ░ ░     ░░   ▒ ░░      ░   ]],
-[[      ░  ░ ░            ░  ░   ░         ░  ░   ░  ░                    ░      ░   ░         ░   ]],
-[[         ░                                                                    ░                  ]],
-
+    [[  ██████  ▄████▄   ▄▄▄       ██▀███   ██▓    ▓█████▄▄▄█████▓    ███▄    █ ██▒   █▓ ██▓ ███▄ ▄███▓]],
+    [[▒██    ▒ ▒██▀ ▀█  ▒████▄    ▓██ ▒ ██▒▓██▒    ▓█   ▀▓  ██▒ ▓▒    ██ ▀█   █▓██░   █▒▓██▒▓██▒▀█▀ ██▒]],
+    [[░ ▓██▄   ▒▓█    ▄ ▒██  ▀█▄  ▓██ ░▄█ ▒▒██░    ▒███  ▒ ▓██░ ▒░   ▓██  ▀█ ██▒▓██  █▒░▒██▒▓██    ▓██░]],
+    [[  ▒   ██▒▒▓▓▄ ▄██▒░██▄▄▄▄██ ▒██▀▀█▄  ▒██░    ▒▓█  ▄░ ▓██▓ ░    ▓██▒  ▐▌██▒ ▒██ █░░░██░▒██    ▒██ ]],
+    [[▒██████▒▒▒ ▓███▀ ░ ▓█   ▓██▒░██▓ ▒██▒░██████▒░▒████▒ ▒██▒ ░    ▒██░   ▓██░  ▒▀█░  ░██░▒██▒   ░██▒]],
+    [[▒ ▒▓▒ ▒ ░░ ░▒ ▒  ░ ▒▒   ▓▒█░░ ▒▓ ░▒▓░░ ▒░▓  ░░░ ▒░ ░ ▒ ░░      ░ ▒░   ▒ ▒   ░ ▐░  ░▓  ░ ▒░   ░  ░]],
+    [[░ ░▒  ░ ░  ░  ▒     ▒   ▒▒ ░  ░▒ ░ ▒░░ ░ ▒  ░ ░ ░  ░   ░       ░ ░░   ░ ▒░  ░ ░░   ▒ ░░  ░      ░]],
+    [[░  ░  ░  ░          ░   ▒     ░░   ░   ░ ░      ░    ░            ░   ░ ░     ░░   ▒ ░░      ░   ]],
+    [[      ░  ░ ░            ░  ░   ░         ░  ░   ░  ░                    ░      ░   ░         ░   ]],
+    [[         ░                                                                    ░                  ]],
   }
 
   dashboard.section.buttons.val = {
@@ -47,7 +61,17 @@ function M.config()
 
   dashboard.section.footer.val = footer()
 
-  dashboard.section.header.opts.hl = "Keyword"
+  -- dashboard.section.header.opts.hl = "Keyword"
+  dashboard.section.header.opts.hl = "ScarletNvimDashboardLogo1"
+  -- dashboard.section.header.opts.hl = {
+  --   { { "ScarletNvimDashboardLogo1", 0, 9999 } },
+  --   { { "ScarletNvimDashboardLogo1", 6, 14 }, { "ScarletNvimDashboardLogo2", 15, 23 } },
+  --   { { "ScarletNvimDashboardLogo1", 7, 9 }, { "ScarletNvimDashboardLogo3", 10, 12 }, { "ScarletNvimDashboardLogo2", 13, 18 } },
+  --   { { "ScarletNvimDashboardLogo2", 0, 9999 } },
+  --   { { "ScarletNvimDashboardLogo2", 0, 9999 } },
+  --   {},
+  --   {},
+  -- }
   dashboard.section.buttons.opts.hl = "Include"
   dashboard.section.footer.opts.hl = "Type"
 
