@@ -68,6 +68,7 @@ function M.config()
   local servers = {
     "lua_ls",
     "clangd",
+    "jdtls",
   }
 
   local default_diagnostic_config = {

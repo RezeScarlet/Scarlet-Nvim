@@ -57,7 +57,7 @@ function M.config()
     local opts = {
       cmd = exec[1] or vim.o.shell,
       keymap = exec[2],
-      label = exec[3],
+      -- label = exec[3],
       count = i,
       direction = direction,
       size = function()
@@ -81,6 +81,7 @@ function M.config()
     direction = "float",
     close_on_exit = true, -- close the terminal window when the process exits
     shell = nil, -- change the default shell
+    -- on_open = fun("clear"),
     float_opts = {
       border = "rounded",
       winblend = 0,
@@ -113,10 +114,10 @@ function M.config()
 
   local opts = { noremap = true, silent = true }
   function _G.set_terminal_keymaps()
-    vim.api.nvim_buf_set_keymap(0, "t", "<m-h>", [[<C-\><C-n><C-W>h]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<m-j>", [[<C-\><C-n><C-W>j]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<m-k>", [[<C-\><C-n><C-W>k]], opts)
-    vim.api.nvim_buf_set_keymap(0, "t", "<m-l>", [[<C-\><C-n><C-W>l]], opts)
+    vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
+    vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
+    vim.api.nvim_buf_set_keymap(0, "t", "<C-k>", [[<C-\><C-n><C-W>k]], opts)
+    vim.api.nvim_buf_set_keymap(0, "t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
   end
 end
 
