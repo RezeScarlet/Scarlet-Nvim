@@ -35,5 +35,4 @@ spec "user.todocomments"
 spec "user.autosave"
 -- spec "user.keys" Display Keys
 spec "user.transparent"
-spec "user.obsidian"
 require "user.lazy"
