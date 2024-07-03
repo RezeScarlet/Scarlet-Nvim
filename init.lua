@@ -35,4 +35,4 @@ spec "user.todocomments"
 spec "user.autosave"
 -- spec "user.keys" Display Keys
 spec "user.transparent"
-require "user.lazy"
+ require "user.lazy"
