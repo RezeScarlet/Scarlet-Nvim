@@ -91,7 +91,7 @@ function M.config()
       },
     },
     winbar = {
-      enabled = true,
+      enabled = false,
       name_formatter = function(term) --  term: Terminal
         return term.count
       end,

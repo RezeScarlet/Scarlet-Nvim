@@ -14,7 +14,7 @@ function M.config()
 
   harpoon:setup()
 
-  keymap("n", "<C-m>", function() harpoon:list():append() end)
+  keymap("n", "<C-m>", function() harpoon:list():add() end)
   keymap("n", "<C-1>", function() harpoon:list():select(1) end)
   keymap("n", "<C-2>", function() harpoon:list():select(2) end)
   keymap("n", "<C-3>", function() harpoon:list():select(3) end)

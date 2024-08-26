@@ -35,4 +35,5 @@ spec "user.todocomments"
 spec "user.autosave"
 -- spec "user.keys" Display Keys
 spec "user.transparent"
+spec "user.vimtex"
  require "user.lazy"
